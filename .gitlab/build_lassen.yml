@@ -33,3 +33,10 @@ clang_upstream_gfortran (Main build_with_deps_on_lassen):
     COMPILER: "clang@upstream_gfortran"
     SPEC: "@develop%${COMPILER}"
   extends: .main_build_with_deps_on_lassen
+
+lifetime_analysis_on_lassen:
+  stage: l_lifetime_analysis
+  variables:
+    COMPILER: "clang@11.0.0_gfortran-lifetimes"
+    HOST_CONFIG: "lassen-blueos_3_ppc64le_ib_p9-clang@11.0.0_gfortran-lifetimes.cmake"
+  extends: [.on_lassen, .pr_workflow, .blueos_3_ppc64le_ib_p9_lifetime_script]
